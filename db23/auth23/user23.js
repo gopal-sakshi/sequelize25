@@ -17,15 +17,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         hash: { type     : DataTypes.TEXT, allowNull: false },
         meta: DataTypes.JSONB
-    }, { tableName: 'User23', timestamps: false});
+    }, { tableName: 'user23', timestamps: false});
 
-    // User23.associate = function (db) {
-    //     User23.belongsTo(db.Org23, { 
-    //         as: 'Org23',
-    //         foreignKey: { allowNull: false },
-    //         onDelete: 'cascade'
-    //     })
-    // }
+    User23.associate = function (db) {
+        User23.belongsTo(db.Org23, { 
+            as: 'Org23',
+            foreignKey: { allowNull: false },
+            onDelete: 'cascade'
+        })
+    }
 
     User23.findByEmail = function (email23) {
         return User23.findOne({

@@ -14,16 +14,21 @@ module.exports = (sequelize, DataTypes) => {
             validate : { isEmail: true }
         },
         countries: { type: DataTypes.ARRAY(DataTypes.STRING) },
-        hash: { type     : DataTypes.TEXT, allowNull: false },
+        hash: { type: DataTypes.TEXT, allowNull: false },
         meta: DataTypes.JSONB
-    }, { tableName: 'Org23', timestamps: false});
+    }, { tableName: 'org23', timestamps: false});
 
     // Org23.associate = function (db) { }
 
-    Org23.findByEmail = function (email23) {
+    Org23.findOrgByEmail = function (email23) {
         return Org23.findOne({
             where : { emailId: email23 }
         });
+    }
+
+    Org23.createOrg = async (payload) => {
+        return await Org23.build(payload).save();
+        // return await Org23.create(payload);
     }
 
     return Org23;

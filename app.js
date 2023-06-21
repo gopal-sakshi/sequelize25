@@ -1,13 +1,22 @@
 const express = require("express");
 const app = express();
-
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-// const postsRouter = require("./routes/posts");
-// const usersRouter = require("./routes/users");
+/******************************************************************/
+const authRouter = require('./routes/auth23Router');
 
-// app.use('/posts', postsRouter);
-// app.use('/users', usersRouter);
+
+app.use('/auth', authRouter);
+/******************************************************************/
+
+
+
+
+/******************************************************************/
+app.use('/', (req, res, next) => {
+    res.send('you have hit base path');
+});
+/******************************************************************/
 
 module.exports = app
