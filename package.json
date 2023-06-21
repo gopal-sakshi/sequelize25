@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start":"nodemon --ignore resources/* bin/www"
+    "start": "nodemon --ignore resources/* bin/www"
   },
   "author": "",
   "license": "ISC",
