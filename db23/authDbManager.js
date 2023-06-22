@@ -1,15 +1,11 @@
 const Sequelize = require("sequelize");
-const authDbInstance = new Sequelize('auth23', 'postgres', '1258', {
-    host: '127.0.0.1',
+const dbSettings = require("../config/dbSettings");
+const authDbInstance = new Sequelize('auth23', dbSettings.user, dbSettings.password, {
+    host: dbSettings.host,
     dialect: 'postgres',
-    port: '5432',
-    pool: {
-        max: 5,             // maximum number of connection in pool
-        min: 0,             // minimum number of connection in pool
-        acquire: 30000,     // max time that pool will try to get connection before throwing error
-        idle: 10000         // max time a connection can be idle, before being released
-    },
-    logging: false
+    port: dbSettings.port,
+    pool: dbSettings.pool,
+    logging: dbSettings.logging
 });
 
 const authDb = {};

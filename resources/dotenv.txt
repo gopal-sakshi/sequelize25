@@ -1,0 +1,30 @@
+Environment variables 
+- variables external to our application 
+- they reside in the OS or the container of the app is running in.
+- they are used for decoupling application configurations
+- some examples are
+    HTTP Port & Address
+    Database connection information
+    Location of static files/folders
+    Endpoints - For dev your app will point to a test API URL, whereas in prod it points to live API URL.
+    Sensitive data like API keys 
+------------------------------------------------------------------
+Generally, public dont use "dotenv" in production
+they use "dotenv" only in dev, qa, staging etc
+
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+------------------------------------------------------------------
+Why
+- In production, you set the environment variables directly into your 
+    virtual machine (or) docker container (or) dedicated server
+- you might not have ssh access to them
+- plus, you can't push .env file to your version control
+    as you should never push credentials to git
+------------------------------------------------------------------
+
+config will read your envi file
+- assign the properties to process.env
+- store the result in "parsed" property
+- see db.js
