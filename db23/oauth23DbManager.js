@@ -10,11 +10,11 @@ const oauth23DbInstance = new Sequelize('oauth23', dbSettings.user, dbSettings.p
 
 const oauth23Db = {};
 
-authDb.Sequelize = Sequelize;
-authDb.sequelize = oauth23DbInstance;
+oauth23Db.Sequelize = Sequelize;
+oauth23Db.sequelize = oauth23DbInstance;
 
-authDb.user = require("./oauth23/user")(oauth23DbInstance, Sequelize);
-authDb.userAuth = require("./oauth23/userAuth")(oauth23DbInstance, Sequelize);
+oauth23Db.user = require("./oauth23/user")(oauth23DbInstance, Sequelize);
+oauth23Db.userAuth = require("./oauth23/userAuth")(oauth23DbInstance, Sequelize);
 
 
 module.exports = oauth23Db;

@@ -26,6 +26,10 @@ module.exports = (sequelize, DataTypes) => {
         });
     }
 
+    Org23.findAllOrg = function() {
+        return Org23.findAll()
+    }
+
     Org23.createOrg = async (payload) => {
         return await Org23.build(payload).save();
         // return await Org23.create(payload);
