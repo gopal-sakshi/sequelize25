@@ -1,8 +1,9 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-
+app.use(cors());
 /******************************************************************/
 const authRouter = require('./routes/auth23Router');
 const oauth23Router = require('./routes/oauth23Router');

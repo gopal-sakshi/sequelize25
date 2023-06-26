@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         meta: DataTypes.JSONB
     }, { tableName: 'user'});
 
+    // insert into user (firstName, lastName, emailId) values ('karim', 'benzema', 'benz@gmail.com');
     User.findByEmail = function (email23) {
         return User.findOne({
             where: { emailId: email23 }

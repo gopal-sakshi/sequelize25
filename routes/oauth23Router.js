@@ -7,19 +7,19 @@ const oauth23Db = require('../db23/oauth23DbManager');
 
 async function login23(req, res, next) {
     console.log(req.body);
-    var user = await oauth23Db.user.findByEmail(req.body.emailId);
-    var userAuth = await oauth23Db.UserAuth.insert({
-        userId       : user.id,
-        codeTimestamp: new Date().getTime(),
-        clientId     : data.clientId,
-        meta         : {
-          codeChallenge      : req.data.codeChallenge,
-          codeChallengeMethod: req.data.codeChallengeMethod,
-          scope              : req.data.scope,
-          responseType       : req.data.responseType,
-        },
-    });
-
+    // var user = await oauth23Db.user.findByEmail(req.body.emailId);
+    // var userAuth = await oauth23Db.UserAuth.insert({
+    //     userId       : user.id,
+    //     codeTimestamp: new Date().getTime(),
+    //     clientId     : data.clientId,
+    //     meta         : {
+    //       codeChallenge      : req.data.codeChallenge,
+    //       codeChallengeMethod: req.data.codeChallengeMethod,
+    //       scope              : req.data.scope,
+    //       responseType       : req.data.responseType,
+    //     },
+    // });
+    res.send({info:'login payload received'});
 }
 async function verify23(req, res, next) {
     
@@ -55,6 +55,7 @@ function generateTokens(user){
     return { accessToken : accessToken, refreshToken : refreshToken };
 }
 async function token23(req, res, next) {
+    res.send({ info: 'token Info received'});
     if (req.body.grantType === 'refresh_token') {
         return refreshAccessToken(req.body.userId, req.body);
     } else {
@@ -66,6 +67,6 @@ async function token23(req, res, next) {
 // authRouter.post('/createUser', )
 oauth23Router.post('/login', login23);
 oauth23Router.post('/token/verify', verify23);
-oauth23Router.get('/token', token23);
+oauth23Router.post('/token', token23);
 /*************************************************************/
 module.exports = oauth23Router;
