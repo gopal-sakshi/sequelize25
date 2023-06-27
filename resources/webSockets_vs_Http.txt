@@ -1,0 +1,20 @@
+websockets
+- connection is kept OPEN
+- bi-directional communication
+- socket ===> combination of ipAddress + port
+
+websockets used @
+- some examples
+    realtime apps, game applications
+    chat apps
+- we wont make a httpRequest / API call to fetch data every now & then
+    it'll be time consuming - to make api call & fetch data
+    we have to open connection, client/server acknowledgements - handshakes & stuff
+    But if we use websockets
+
+How web sockets work
+- the connection remains open
+- ipAddress + port @ client side <========> ipAddress + port @ server side
+- both are connected and communicate every 25 seconds (ping-pong)
+- so, any messaging will be instantly fast compared to http
+---------------------------------------------------------------------------

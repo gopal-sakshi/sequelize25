@@ -1,0 +1,28 @@
+first number    = type of communication for engine.io
+second number   = type of action for socket.io
+
+engine.io is a lower level library than socket.io.
+----------------------------------------------------------------------
+ENGINE IO                           SOCKET IO
+
+0	"open"                          0       CONNECT
+1	"close"                         1       DISCONNECT
+2	"ping"                          2       EVENT
+3	"pong"                          3       ACK
+4	"message"                       4       ERROR
+5	"upgrade"                       5       BINARY_EVENT
+6	"noop"                          6       BINARY_ACK
+----------------------------------------------------------------------
+
+all the above codes expect a JSON array with 2 elements ??
+- 1st element = event ('moveS' in this case)
+- 2nd element = parameter/argument
+
+42 ["moveS" , {"from":"g1", "to", "f3"} ] 
+- it is a message for engine.io (4)         (not upgrade/open/close)
+- it is an event for socket.io (2)          (event on socketIO... not connect/ack)
+- it emits the 
+    "moveS" action 
+    {"from": "g1", "to", "f3"} as a parameter
+----------------------------------------------------------------------
+see socket_examples_cerina.txt

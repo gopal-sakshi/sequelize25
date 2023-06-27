@@ -1,0 +1,17 @@
+Duplex
+- both parties can communicate with each other in both directions
+
+
+full-Duplex
+- both parties can communicate with each other simultaneously.
+- telephone
+
+half-Duplex
+- both parties can communicate with each other, but not simultaneously
+- a walkie-talkie with a push-to-talk button. 
+    to speak, push button ===> turns on the transmitter and turns off the receiver
+    preventing them from hearing the remote person while talking. 
+    to listen, release the button ===> which turns on the receiver and turns off the transmitter.
+
+websockets
+- full Duplex

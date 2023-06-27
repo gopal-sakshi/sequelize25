@@ -1,0 +1,58 @@
+RECEIVE
+0{
+    "sid": "jooTGK1RTjoGU_SyAAAO",
+    "upgrades": [],
+    "pingInterval": 25000,
+    "pingTimeout": 5000
+}
+-----------------------------------------------
+SEND
+40
+-----------------------------------------------
+RECEIVE
+40{
+    "sid": "pUyMps39g1AH9WrhAAAP"
+}
+-----------------------------------------------
+SEND
+42[
+    "validate",
+    {
+        "isAgent": true,
+        "botId": "d40756c9-05ea-4e81-8500-62f8bbc5d32b",
+        "orgId": "6ccf3d62-8552-4088-aa95-4db17b8c400f"
+    }
+]
+-----------------------------------------------
+RECEIVE
+42[
+    "notify-agent-session-start",
+    {
+        "msg": "Your session is activated"
+    }
+]
+-----------------------------------------------
+SEND
+[
+    "agent-get-waiting-chats",
+    {
+        "data": "4ed50bf3-5c13-4917-9e9c-f8fa310f6f00",
+        "session": {
+            "orgId": "6ccf3d62-8552-4088-aa95-4db17b8c400f",
+            "botId": "d40756c9-05ea-4e81-8500-62f8bbc5d32b"
+        }
+    }
+]
+-----------------------------------------------
+RECEIVE
+[
+    "notify-clients-waiting-count",
+    {
+        "count": 0
+    }
+]
+-----------------------------------------------
+a series of send/recieves 
+    SEND 3
+    RECEIVE 2
+-----------------------------------------------    
