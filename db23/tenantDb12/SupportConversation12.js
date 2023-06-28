@@ -42,7 +42,7 @@ module.exports = function (sequelize, DataTypes) {
         initialMessageId: { type: DataTypes.UUID, allowNull: true },
         integration: DataTypes.STRING,
         meta: DataTypes.JSONB
-    }, { tableName: 'SupportConversation' });
+    }, { tableName: 'support_conversation' });
 
     SupportConversation.getById = function (id) {
         return SupportConversation.findOne({ 

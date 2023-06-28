@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start":"nodemon --ignore resources/* ./bin/www",
+    "start": "nodemon --ignore resources/* ./bin/www",
     "start_kpt": "export NODE_ENV=kpt&& nodemon bin/www",
     "start_home": "SET NODE_ENV=home&& nodemon bin/www"
   },
@@ -16,6 +16,7 @@
     "nodemon": "^2.0.22",
     "passport-jwt": "^4.0.1",
     "pg": "^8.11.0",
-    "sequelize": "^6.31.1"
+    "sequelize": "^6.31.1",
+    "socket.io": "^4.7.1"
   }
 }

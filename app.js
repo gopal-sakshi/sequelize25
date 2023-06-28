@@ -1,4 +1,5 @@
 const express = require("express");
+
 const cors = require("cors");
 const app = express();
 app.use(express.json());
@@ -7,9 +8,11 @@ app.use(cors());
 /******************************************************************/
 const authRouter = require('./routes/auth23Router');
 const oauth23Router = require('./routes/oauth23Router');
+const tenantRouter = require('./routes/tenant23DbRouter');
 
 app.use('/auth', authRouter);
 app.use('/oauth23', oauth23Router);
+app.use('/socket44', tenantRouter);
 /******************************************************************/
 
 

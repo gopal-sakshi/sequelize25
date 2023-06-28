@@ -1,39 +1,57 @@
-module.exports = (sequelize, DataTypes) => {
-    const Op = sequelize.Op;
-    var Org23 = sequelize.define('org23', {
-        orgId: {
-            type        : DataTypes.UUID,
-            allowNull   : false,
-            primaryKey  : true,
-            defaultValue: DataTypes.UUIDV4
-        },
-        name: { type: DataTypes.STRING },
-        emailId: {
-            type     : DataTypes.STRING,
-            allowNull: false,
-            validate : { isEmail: true }
-        },
-        countries: { type: DataTypes.ARRAY(DataTypes.STRING) },
-        hash: { type: DataTypes.TEXT, allowNull: false },
+const MESSAGE_TYPE = { CUSTOMER: 0, AGENT: 1 };
+const DATA_TYPE = { TEXT: 0, IMAGE: 1, DOCUMENT: 2 };
+
+module.exports = function (sequelize, DataTypes) {
+    var SupportMessage = sequelize.define("SupportMessage", {
+        id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+        type: { type: DataTypes.INTEGER, allowNull: false },
+        text: DataTypes.TEXT,
+        dataType: { type: DataTypes.INTEGER, allowNull: false },
         meta: DataTypes.JSONB
-    }, { tableName: 'org23', timestamps: false});
+    }, { tableName: 'support_message' });
 
-    // Org23.associate = function (db) { }
-
-    Org23.findOrgByEmail = function (email23) {
-        return Org23.findOne({
-            where : { emailId: email23 }
+    SupportMessage.getById = function (id) {
+        return SupportMessage.findOne({
+            where: { id: id }
         });
-    }
+    };
 
-    Org23.findAllOrg = function() {
-        return Org23.findAll()
-    }
+    SupportMessage.getByConversation = function (id, isAscending, limit) {
+        return SupportMessage.findAll({
+            where: { conversationId: id },
+            order: [
+                ['updatedAt', isAscending ? 'ASC' : 'DESC']
+            ],
+            limit: limit
+        });
+    };
 
-    Org23.createOrg = async (payload) => {
-        return await Org23.build(payload).save();
-        // return await Org23.create(payload);
-    }
+    SupportMessage.getAllByConversation = function (id, isAscending) {
+        return SupportMessage.findAll({
+            where: { conversationId: id },
+            order: [
+                ['updatedAt', isAscending ? 'ASC' : 'DESC']
+            ],
+        });
+    };
 
-    return Org23;
-}
+    SupportMessage.insertClientTextMessage = function (text, conversationId) {
+        return SupportMessage.insert({
+            type: MESSAGE_TYPE.CUSTOMER,
+            dataType: DATA_TYPE.TEXT,
+            text: text,
+            conversationId: conversationId
+        });
+    };
+
+    SupportMessage.insertAgentTextMessage = function (text, conversationId) {
+        return SupportMessage.insert({
+            type: MESSAGE_TYPE.AGENT,
+            dataType: DATA_TYPE.TEXT,
+            text: text,
+            conversationId: conversationId
+        });
+    };
+
+    return SupportMessage;
+};

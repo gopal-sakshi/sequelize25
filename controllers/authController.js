@@ -1,6 +1,6 @@
 const authDb = require('../db23/authDbManager');
 authDb.sequelize.sync()
-.then(() => console.log('synced db'))
+.then(() => console.log('synced auth db'))
 .catch((err) => console.log(err));
 /*************************************************************/
 

@@ -35,5 +35,9 @@ module.exports = (sequelize, DataTypes) => {
         });
     };
 
+    LiveAgentStatus.getTimeDummyQuery = function() {
+        return sequelize.query("SELECT NOW();", { type: sequelize.QueryTypes.SELECT });
+    }
+
     return LiveAgentStatus;
 }
