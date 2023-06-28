@@ -3,13 +3,17 @@ const ConnectionHandler = require('./connectionHandler');
 
 async function createSocketServer (httpServer) {
     console.log('create socket server called');
-    var path = '/socket44';
-    // const io = require("socket.io")(httpServer, {
-    //     path: path
-    // });
-
+    
+    // // NOT WORKING YET
+    // const io = require("socket.io")(httpServer, { path: '/socket44' });
     const io = require("socket.io")(httpServer);
-    io.on('error', (err) => { console.log(err)});
+
+    // MOVED TO CONNECTION_HANDLER
+    // io.on('connection', (socket) => {
+    //     console.log('socket is ready for connection');
+    // });
+    // io.on('error', (err) => { console.log(err)});
+
     /******************** REDIS ADAPTER ***********************/
     // const createAdapter = require('@socket.io/redis-adapter');
     // const pubClient = redis.createClient({ url: "redis://localhost:6379" });

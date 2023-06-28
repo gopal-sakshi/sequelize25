@@ -7,7 +7,9 @@ const doStuff1 = () => {
     invoke1(); invoke2(); invoke3();
 }
 async function handler (io) {
-    io.on('connection', doStuff1);
+    io.on('connection', (socket) => {
+        doStuff1();
+    });
 }
   
 module.exports = handler;

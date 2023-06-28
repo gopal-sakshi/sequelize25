@@ -2,6 +2,7 @@ var app = require('../app');
 var http = require('http');
 var port = 3090;
 app.set('port', port);
+const socketio = require('socket.io');
 
 var server23 = http.createServer(app);
 server23.listen(port);
@@ -11,6 +12,10 @@ server23.on('listening', onListening);
 // we are passing httpServer (with name = server23) as argument to socket
 try {
   require('./socket23')(server23);
+  // var io = socketio(server23);
+  // io.on('connection', (socket) => {
+  //   console.log('socket is ready for connection');
+  // })
 } catch(err) { console.log(err); }
 
 
