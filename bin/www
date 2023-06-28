@@ -9,7 +9,10 @@ server23.on('error', onError);
 server23.on('listening', onListening);
 
 // we are passing httpServer (with name = server23) as argument to socket
-require('./socket23')(server23);
+try {
+  require('./socket23')(server23);
+} catch(err) { console.log(err); }
+
 
 function onError(error) {
   if (error.syscall !== 'listen') { throw error; }

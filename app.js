@@ -12,7 +12,7 @@ const tenantRouter = require('./routes/tenant23DbRouter');
 
 app.use('/auth', authRouter);
 app.use('/oauth23', oauth23Router);
-app.use('/socket44', tenantRouter);
+app.use('/tenant44', tenantRouter);
 /******************************************************************/
 
 
