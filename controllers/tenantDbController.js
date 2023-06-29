@@ -8,8 +8,8 @@ const dummyQuery = async (req, res, next) => {
     res.send(await tenantDb.LiveAgentStatus.getTimeDummyQuery());
 }
 /****************************************************************/
-const createEntry = async (socketId) => {
-    return tenantDb.ServerMwLogger.createEntry(socketId);
+const createEntry = async (socketId, clientId, agentId) => {
+    return tenantDb.ServerMwLogger.createEntry(socketId, clientId, agentId);
 }
 /****************************************************************/
 

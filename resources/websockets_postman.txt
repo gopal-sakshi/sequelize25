@@ -7,3 +7,8 @@ https://www.codingninjas.com/studio/library/using-websocket-requests-in-postman
 In socketIO request
 - any data/message is sent as default event name "messages"
 - but, you can give your custom event name - "greet23"
+
+
+ws://localhost:3090/?type=client22&email='benz@gmail.com'       NOT WORKING
+ws://localhost:3090/?type=client22&email=benz@gmail.com         NOT WORKING
+ws://localhost:3090/?type=client22&email=benz_gmail.com         WORKING (look into it)

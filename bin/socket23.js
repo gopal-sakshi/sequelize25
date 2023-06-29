@@ -4,7 +4,11 @@ const blah = require('../controllers/tenantDbController');
 
 const serverMiddleware23 = async (socket, next) => {
     console.log('new connection about to start --> ', socket.id);
-    await blah.createEntry(socket.id);
+    var clientId = null, agentId = null; socketId = socket.id;
+    socket.handshake.query.type == 'client22' ? 
+                            clientId = socket.handshake.query.email : 
+                            agentId = socket.handshake.query.email;
+    await blah.createEntry(socket.id, clientId, agentId);
     next();
 }
 
@@ -21,9 +25,11 @@ const giligiliga = async (socket, next) => {
 async function createSocketServer (httpServer) {
     const io = require("socket.io")(httpServer);
 
-    // we are having two middlewares on serverInstance
-    // io.use(serverMiddleware23);
-    io.use(giligiliga);
+    /**************************** MIDDLEWARES *******************************/
+    // // we are having two middlewares on serverInstance
+    io.use(serverMiddleware23);
+    // io.use(giligiliga);
+    /***********************************************************************/
 
     /******************** REDIS ADAPTER ***********************/
     // const createAdapter = require('@socket.io/redis-adapter');
