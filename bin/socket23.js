@@ -1,18 +1,29 @@
 const redis = require('redis');
 const ConnectionHandler = require('./connectionHandler');
+const blah = require('../controllers/tenantDbController');
+
+const serverMiddleware23 = async (socket, next) => {
+    console.log('new connection about to start --> ', socket.id);
+    await blah.createEntry(socket.id);
+    next();
+}
+
+const giligiliga = async (socket, next) => {
+    // console.log(socket.request.url);
+    // console.log(socket.request.headers);
+    if(socket.request.headers.project23) { next(); }
+
+    // it seems you cant throw an error here... something transport level errors
+    // else throw Error('provide project23 headers ra idiote')
+    else next(new Error('provide project23 headers ra idiote'));
+}
 
 async function createSocketServer (httpServer) {
-    console.log('create socket server called');
-    
-    // // NOT WORKING YET
-    // const io = require("socket.io")(httpServer, { path: '/socket44' });
     const io = require("socket.io")(httpServer);
 
-    // MOVED TO CONNECTION_HANDLER
-    // io.on('connection', (socket) => {
-    //     console.log('socket is ready for connection');
-    // });
-    // io.on('error', (err) => { console.log(err)});
+    // we are having two middlewares on serverInstance
+    // io.use(serverMiddleware23);
+    io.use(giligiliga);
 
     /******************** REDIS ADAPTER ***********************/
     // const createAdapter = require('@socket.io/redis-adapter');
@@ -20,7 +31,6 @@ async function createSocketServer (httpServer) {
     // const subClient = pubClient.duplicate();
     // io.adapter(createAdapter(pubClient, subClient));
     /***********************************************************/
-
 
     ConnectionHandler(io);
 

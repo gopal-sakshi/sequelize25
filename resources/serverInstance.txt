@@ -1,0 +1,23 @@
+The Server instance 
+- often called io
+---------------------------------------------------
+Server#engine
+- A reference to the underlying Engine.IO server.
+- It can be used to fetch the number of currently connected clients:
+io.engine.clientsCount
+---------------------------------------------------
+ServerInstance
+- emits only ONE event... this event is fired up on new connection
+io.on("connection", (socket) => {
+    // ...     
+});
+---------------------------------------------------
+ServerMiddlewares
+- io.use() = a function that is called for every new, incoming socket.io connection.
+- It can be used for a wide variety of things such as:
+    Logging
+    Authentication
+    Managing sessions
+    Rate limiting
+    Connection validation
+---------------------------------------------------

@@ -1,0 +1,9 @@
+you cant save socketIO requests in a collection that already has httpRequests
+Raw/websocket protocol is different to Socket.io protocol
+choose socket.io protocol for making websocket requests
+
+https://www.codingninjas.com/studio/library/using-websocket-requests-in-postman
+
+In socketIO request
+- any data/message is sent as default event name "messages"
+- but, you can give your custom event name - "greet23"

@@ -18,3 +18,15 @@ How web sockets work
 - both are connected and communicate every 25 seconds (ping-pong)
 - so, any messaging will be instantly fast compared to http
 ---------------------------------------------------------------------------
+
+websockets
+- persistent connection
+- once the connection is established between the client & the server
+- the connection will remain established unless we want to stop
+
+HTTP protocol
+- the client will send a request
+- the server will send a response
+- and the connection will be closed. 
+- For every new request, "a new connection" will be established. 
+---------------------------------------------------------------------------

@@ -1,1 +1,23 @@
 read about redis adapters, sticky-sessions
+
+--------------------------------------------------------
+
+https://stackoverflow.com/questions/24266910/io-onconnection-vs-io-sockets-onconnection
+
+
+default namespace that socketIO clients connect to ===> '/'
+it is identified by io.sockets (or) io
+using 'io.sockets' is equivalent to using 'io' only
+
+https://stackoverflow.com/questions/45521544/differences-between-io-and-io-connect-using-socket-io
+
+io.on listens to the server events. 
+connection is an event on the server, when a socket is connected
+
+socket.on listens to events on that connected socket. 
+socket.on('textMessage') asks to do something 
+    when textMessage event is emitted on the socket
+    which you do from your client using socket.emit('textMessage')
+
+
+https://stackoverflow.com/questions/70943212/what-is-difference-between-socket-on-and-io-on

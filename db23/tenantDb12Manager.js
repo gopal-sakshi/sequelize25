@@ -15,6 +15,7 @@ tenantDb.sequelize = tenantDbInstance;
 
 tenantDb.LiveAgentStatus = require("./tenantDb12/liveAgentStatus12")(tenantDbInstance, Sequelize);
 tenantDb.LiveAgentTransfer = require("./tenantDb12/liveAgentTransfer12")(tenantDbInstance, Sequelize);
+tenantDb.ServerMwLogger = require("./tenantDb12/serverMiddlewareLogger")(tenantDbInstance, Sequelize)
 tenantDb.SupportConversation = require("./tenantDb12/SupportConversation12")(tenantDbInstance, Sequelize);
 tenantDb.SupportMessage = require("./tenantDb12/SupportMessage12")(tenantDbInstance, Sequelize);
 

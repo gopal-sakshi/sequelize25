@@ -1,0 +1,37 @@
+emitting & listening events
+broadcasting events
+joining & leaving rooms
+------------------------------------------------------------
+
+Socket.id
+- each new connection is assigned a random 20-characters identifier.
+- Upon creation, the Socket joins the room identified by its own id
+    which means you can use it for private messaging:
+
+
+Socket.handshake
+{
+    headers:        /* the headers of the initial request */
+    query:          /* the query params of the initial request */
+    auth:           /* the authentication payload */
+    time:           /* the date of creation (as string) */
+    issued:         /* the date of creation (unix timestamp) */
+    url:            /* the request URL string */
+    address:        /* the ip of the client */
+    xdomain:        /* whether the connection is cross-domain */
+    secure:         /* whether the connection is secure */
+}
+
+
+Socket#rooms
+- reference to the rooms the Socket is currently in.
+
+
+Additional attributes
+- you can attach any attribute to the Socket instance and use it later:
+- socket.user23 = user23;
+
+
+Socket middlewares
+- these middlewares are called for each incoming packet:
+- 
