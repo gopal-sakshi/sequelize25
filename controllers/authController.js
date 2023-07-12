@@ -12,12 +12,12 @@ const findOrgByEmail = async (req, res, next) => {
     res.send(await authDb.org23.findOrgByEmail(req.body.email23));
 }
 
-const findAllOrg = async (req, res, next) => {
-    res.send(await authDb.org23.findAllOrg());
+const findAllFn = async (req, res, next) => {
+    res.send(await authDb.org23.findAllFn());
 }
 /*************************************************************/
 module.exports = {
     createOrg: createOrg,
     findOrgByEmail: findOrgByEmail,
-    findAllOrg: findAllOrg
+    findAllFn: findAllFn
 }

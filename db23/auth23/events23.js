@@ -1,20 +1,15 @@
 module.exports = (sequelize, DataTypes) => {
     const Op = sequelize.Op;
-    var Org23 = sequelize.define('org23', {
-        orgId: {
+    var Org23 = sequelize.define('events23', {
+        eventid: {
             type        : DataTypes.UUID,
             allowNull   : false,
             primaryKey  : true,
             defaultValue: DataTypes.UUIDV4
         },
         name: { type: DataTypes.STRING },
-        emailId: {
-            type     : DataTypes.STRING,
-            allowNull: false,
-            validate : { isEmail: true }
-        },
-        countries: { type: DataTypes.ARRAY(DataTypes.STRING) },
-        hash: { type: DataTypes.TEXT, allowNull: false },
+        teamCount: DataTypes.INTEGER,
+        winnersList: { type: DataTypes.ARRAY, allowNull: false },
         meta: DataTypes.JSONB
     }, { tableName: 'org23', timestamps: false});
 
