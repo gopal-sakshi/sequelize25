@@ -9,9 +9,11 @@ app.use(cors());
 const authRouter = require('./routes/auth23Router');
 const oauth23Router = require('./routes/oauth23Router');
 const tenantRouter = require('./routes/tenant23DbRouter');
+const cricketRouter = require('./routes/cricket23Router');
 
 app.use('/auth', authRouter);
 app.use('/oauth23', oauth23Router);
+app.use('/cricket23', cricketRouter);
 app.use('/tenant44', tenantRouter);
 /******************************************************************/
 
