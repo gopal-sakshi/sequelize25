@@ -16,6 +16,6 @@ cricket23Db.sequelize = cricket23DbInstance;
 cricket23Db.teams23 = require("./cricket23/models/teams23")(cricket23DbInstance, Sequelize);
 cricket23Db.ipl2018 = require("./cricket23/models/ipl2018")(cricket23DbInstance, Sequelize);
 cricket23Db.player23 = require("./cricket23/models/player23")(cricket23DbInstance, Sequelize);
-
+cricket23Db.currency23 = require("./cricket23/models/currency23")(cricket23DbInstance, Sequelize);
 
 module.exports = cricket23Db;

@@ -1,0 +1,12 @@
+var path = require('path')
+
+module.exports = {
+
+    // you can use either json (or) js file
+    // 'config':          path.resolve('config', 'sequelize_migration23.json'),
+    'config':          path.resolve('config', 'sequelize_migration24.js'),
+    
+    'migrations-path': path.resolve('db23', 'cricket23', 'migrations'),
+    'models-path':     path.resolve('db23', 'cricket23', 'models'),
+    'seeders-path':    path.resolve('db23', 'cricket23', 'seeders'),
+}

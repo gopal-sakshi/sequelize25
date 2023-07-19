@@ -1,5 +1,5 @@
 const cricketDb = require('../db23/cricketDbManager');
-cricketDb.sequelize.sync()
+cricketDb.sequelize.sync({force:true})
 .then(() => console.log('synced cricket db'))
 .catch((err) => console.log(err));
 /*************************************************************/

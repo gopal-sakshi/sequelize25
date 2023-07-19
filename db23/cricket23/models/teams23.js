@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
     const Op = sequelize.Op;
     var teams23 = sequelize.define('teams23', {
-        team_name: {
+        club: {
             type        : DataTypes.STRING,
             allowNull   : false,
             primaryKey  : true
