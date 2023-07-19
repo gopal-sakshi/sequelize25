@@ -20,5 +20,8 @@
     "redis": "^4.6.7",
     "sequelize": "^6.31.1",
     "socket.io": "^4.7.1"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.1"
   }
 }
