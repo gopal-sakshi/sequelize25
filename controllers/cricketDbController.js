@@ -1,7 +1,11 @@
 const cricketDb = require('../db23/cricketDbManager');
-cricketDb.sequelize.sync({force:true})
-.then(() => console.log('synced cricket db'))
-.catch((err) => console.log(err));
+
+/*************************************************************/
+// ==== SYNC shouldnt be used in production ====
+// ==== so, comment these forever ==============
+// cricketDb.sequelize.sync({force:true})
+// .then(() => console.log('synced cricket db'))
+// .catch((err) => console.log(err));
 /*************************************************************/
 
 
@@ -15,9 +19,14 @@ const getBowlers = async (req, res, next) => {
     res.send(await cricketDb.player23.getBowlers());
 }
 
+const createPlayer = async(req, res, next) => {
+    res.send(await cricketDb.player23.createPlayer(req))
+    
+}
 /*************************************************************/
 module.exports = {
     getAllTeans: getAllTeams,
     getSomeStats: getSomeStats,
-    getBowlers: getBowlers
+    getBowlers: getBowlers,
+    createPlayer: createPlayer
 }

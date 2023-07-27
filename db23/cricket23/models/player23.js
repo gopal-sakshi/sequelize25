@@ -32,5 +32,14 @@ module.exports = (sequelize, DataTypes) => {
         });
     }
 
+    player23.createPlayer = function(payload) {
+        return player23.build({
+            country: '',
+            role: '',
+            club: '',
+            player: ''
+        })
+    }
+
     return player23;
 }
