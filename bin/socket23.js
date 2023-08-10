@@ -2,6 +2,14 @@ const redis = require('redis');
 const ConnectionHandler = require('./connectionHandler');
 const blah = require('../controllers/tenantDbController');
 
+
+
+
+
+
+
+
+/***************** MIddleWares ************************/
 const serverMiddleware23 = async (socket, next) => {
     console.log('new connection about to start --> ', socket.id);
     var clientId = null, agentId = null; socketId = socket.id;
@@ -21,8 +29,24 @@ const giligiliga = async (socket, next) => {
     // else throw Error('provide project23 headers ra idiote')
     else next(new Error('provide project23 headers ra idiote'));
 }
+/*******************************************************/
+
+
+
+
+
+
+
+/******************** Utility Methods ****************/
+function utilityMethods(io) { 
+    console.log('clients count1 ====> ', io.engine.clientsCount);
+    console.log('clients count2 ====> ', io.of('/').sockets.size);
+}
+/*****************************************************/
+
 
 async function createSocketServer (httpServer) {
+    console.log('ssss000');
     const io = require("socket.io")(httpServer);
 
     /**************************** MIDDLEWARES *******************************/
@@ -32,14 +56,14 @@ async function createSocketServer (httpServer) {
     /***********************************************************************/
 
     /******************** REDIS ADAPTER ***********************/
-    // const createAdapter = require('@socket.io/redis-adapter');
-    // const pubClient = redis.createClient({ url: "redis://localhost:6379" });
-    // const subClient = pubClient.duplicate();
-    // io.adapter(createAdapter(pubClient, subClient));
+    const createAdapter = require('@socket.io/redis-adapter');
+    const pubClient = redis.createClient({ url: "redis://localhost:6379" });
+    const subClient = pubClient.duplicate();
+    io.adapter(createAdapter(pubClient, subClient));
     /***********************************************************/
 
-    ConnectionHandler(io);
-
+    // ConnectionHandler(io);
+    utilityMethods(io);
     return io;
 }   
 
