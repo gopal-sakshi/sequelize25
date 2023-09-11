@@ -1,6 +1,7 @@
 const Sequelize = require("sequelize");
 const dbSettings = require("../config/dbSettings");
 const cricket23DbInstance = new Sequelize('cricket23', dbSettings.user, dbSettings.password, {
+    query: { raw:true },        // only raw results given... we wont get DAO objects from now
     host: dbSettings.host,
     dialect: 'postgres',
     port: dbSettings.port,

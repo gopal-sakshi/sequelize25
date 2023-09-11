@@ -8,6 +8,24 @@ const cricketDb = require('../db23/cricketDbManager');
 // .catch((err) => console.log(err));
 /*************************************************************/
 
+// IIFE ---> to test various methods of sequelize (logging, where, includes)
+(async function learnSequelizeMethods() {
+    
+    try {
+        
+        var blah11 = await cricketDb.ipl2018.logging23();
+        // var blah11 = await cricketDb.ipl2018.dynamicQuery1('CSK',200);
+        // var blah11 = await cricketDb.ipl2018.update23('Chennai Super Kings', 'CSK23');
+        console.log(blah11);
+
+
+
+    } catch(err) {
+        console.log(err);
+    }
+
+})();
+
 
 const getAllTeams = async (req, res, next) => {
     res.send(await cricketDb.teams23.getAllTeams());
