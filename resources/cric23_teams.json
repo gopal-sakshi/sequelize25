@@ -1,0 +1,50 @@
+[
+    {
+        "club": "CSK",
+        "ground": "chennai",
+        "owner": "srinivasan",
+        "champions": [2010, 2011, 2018, 2021, 2023]
+    },
+    {
+        "club": "MI",
+        "ground": "mumbai",
+        "owner": "ambani",
+        "champions": [2013, 2015, 2017, 2019, 2020]
+    },
+    {
+        "club": "SRH",
+        "ground": "hyderabad",
+        "owner": "sun network",
+        "champions": [2009, 2016]
+    },
+    {
+        "club": "KKR",
+        "ground": "kolkata",
+        "owner": "shah rukh khan",
+        "champions": [2012, 2014]
+    },
+    {
+        "club": "RCB",
+        "ground": "bangalore",
+        "owner": "united breweries",
+        "champions": []
+    },
+    {
+        "club": "KXIP",
+        "ground": "mohali",
+        "owner": "priety zinta",
+        "champions": []
+    },
+    {
+        "club": "DC",
+        "ground": "delhi",
+        "owner": "zindal",
+        "champions": []
+    },
+    {
+        "club":"RR",
+        "ground":"jaipur",
+        "owner": "royal sports",
+        "champions":[2008]
+    }
+]

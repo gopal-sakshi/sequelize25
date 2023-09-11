@@ -1,15 +1,10 @@
-const path = require("path");
-const jc23 = require('dotenv').config(
-    { path: `.env.${process.env.NODE_ENV}` }
-);
-/*****************************************/
-// console.log(jc23);
-// console.log(jc23.parsed);
-// console.log(process.env.PORT);
-/*****************************************/
+console.log(process.env.USER);
+console.log(process.env.HOST);
+console.log(process.env.PORT);
+console.log(process.env.password);
 const dbSettings = {
-    user: 'postgres',
-    host: '127.0.0.1',
+    user: process.env.USER,
+    host: process.env.HOST,
     port: process.env.PORT,
     password: process.env.password,
     pool: {

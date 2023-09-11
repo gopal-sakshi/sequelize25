@@ -3,7 +3,7 @@ function validateFn() {
 }
 module.exports = (sequelize, DataTypes) => {
     const Op = sequelize.Op;
-    var ROLES = ['batsman', 'wk', 'bowler', 'allrounder', 'giliga'];
+    var ROLES = ['batsman', 'wk', 'bowler', 'allrounder'];
     var player23 = sequelize.define('player23', {
         player: {
             type: DataTypes.STRING,

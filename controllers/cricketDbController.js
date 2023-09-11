@@ -20,13 +20,17 @@ const getBowlers = async (req, res, next) => {
 }
 
 const createPlayer = async(req, res, next) => {
-    res.send(await cricketDb.player23.createPlayer(req))
-    
+    res.send(await cricketDb.player23.createPlayer(req.body));   
+}
+
+const createTeam = async(req, res) => {
+    res.send(await cricketDb.teams23.createTeam(req.body))
 }
 /*************************************************************/
 module.exports = {
     getAllTeans: getAllTeams,
     getSomeStats: getSomeStats,
     getBowlers: getBowlers,
-    createPlayer: createPlayer
+    createPlayer: createPlayer,
+    createTeam: createTeam
 }

@@ -5,7 +5,9 @@
   "scripts": {
     "start": "nodemon --ignore resources/* ./bin/www",
     "start_kpt": "export NODE_ENV=kpt&& node bin/www",
-    "start_home": "SET NODE_ENV=home&& nodemon bin/www"
+    "start_home": "SET NODE_ENV=home&& nodemon bin/www",
+    "start_render": "SET NODE_ENV=render&& node bin/www",
+    "info-------": "for some reason, there should NOT be space between NODE_ENV=render and &&"
   },
   "author": "",
   "license": "ISC",

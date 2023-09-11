@@ -15,5 +15,9 @@ module.exports = (sequelize, DataTypes) => {
         return teams23.findAll();
     }
 
+    teams23.createTeam = function(payload) {
+        return teams23.bulkCreate(payload);
+    }
+
     return teams23;
 }
