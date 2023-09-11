@@ -13,10 +13,11 @@ const cricketDb = require('../db23/cricketDbManager');
     
     try {
         
-        var blah11 = await cricketDb.ipl2018.logging23();
+        // var blah11 = await cricketDb.ipl2018.findAll();
         // var blah11 = await cricketDb.ipl2018.dynamicQuery1('CSK',200);
         // var blah11 = await cricketDb.ipl2018.update23('Chennai Super Kings', 'CSK23');
-        console.log(blah11);
+        // var blah11 = await cricketDb.ipl2018.associateTeams23(cricketDb);
+        // console.log(blah11);
 
 
 

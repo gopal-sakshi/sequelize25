@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const dbSettings = require("../config/dbSettings");
-console.log('user ==============> ', dbSettings.user);
-console.log('user ==============> ', dbSettings.password);
+// console.log('user ==============> ', dbSettings.user);
+// console.log('user ==============> ', dbSettings.password);
 const authDbInstance = new Sequelize('auth23', dbSettings.user, dbSettings.password, {
     host: dbSettings.host,
     dialect: 'postgres',

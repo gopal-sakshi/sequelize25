@@ -20,11 +20,12 @@ module.exports = (dbInstance, SequelizeClass) => {
     }, { tableName: 'ipl2018', timestamps: false});
 
 
-    ipl2018.associate = function(db) {
-        ipl2018.belongsTo(db.teams23, {
-            foreignKey: 'club'
-        })
-    }
+    // ipl2018.associateTeams23 = function(db) {
+    //     console.log('adding associationsssssssss')
+    //     return ipl2018.belongsTo(db.teams23, {
+    //         foreignKey: 'club'
+    //     })
+    // }
 
     ipl2018.getSomeStats = function() {
         return ipl2018.findAll({
