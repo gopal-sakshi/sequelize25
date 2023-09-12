@@ -28,11 +28,11 @@ const seed23 = () => {
 const footballDbInstance = new Sequelize('football23', dbSettings.user, dbSettings.password, {
     query: { raw:true },
     logging: console.log,
+    // logging: dbSettings.logging,
     host: dbSettings.host,
     dialect: 'postgres',
     port: dbSettings.port,
-    pool: dbSettings.pool,
-    logging: dbSettings.logging
+    pool: dbSettings.pool
 });
 
 const footballDb = {};
@@ -42,18 +42,30 @@ footballDb.Sequelize = Sequelize;
 footballDb.sequelize = footballDbInstance;
 
 footballDb.clubs12 = require("./football23/clubs12")(footballDbInstance, Sequelize);
-footballDb.footballers12 = require("./football23/footballers12")(footballDbInstance, Sequelize);
+footballDb.footballers12 = require("./football23/footballers12")(footballDbInstance, Sequelize, footballDb);
 
 // User.hasMany(Task);              // Will add userId to Task model
 // Task.belongsTo(User);            // Will also add userId to Task model
 
+// APPROACH 01
 // footballDb.footballers12.belongsTo(footballDb.clubs12);             ## README22
-footballDb.footballers12.belongsTo(footballDb.clubs12);  
-footballDb.clubs12.hasMany(footballDb.footballers12);
+
+// APPROACH 02
+footballDb.footballers12.belongsTo(footballDb.clubs12, {
+    foreignKey: 'clubId33'
+});  
+// footballDb.clubs12.hasMany(footballDb.footballers12, {
+//     foreignKey: 'clubId33'
+// });
+
+// APPROACH 03
+// footballDb.footballers12.hasOne(footballDb.clubs12);
+// its just plain wrong... hasOne ====> used to define 1-1 relationship
+// but clubs & players ===> 1-N relationship... so, doesnt apply here 
 
 
 footballDbInstance.sync({force:true})
-.then(() => seed23())
+// .then(() => seed23())
 .then(() => { return footballDb.clubs12.findOne() })
 .then((data11) => { console.log(data11) })
 

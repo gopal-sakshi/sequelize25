@@ -1,10 +1,17 @@
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize, Sequelize, dbObject) => {
     const footballers12 = sequelize.define('footballers12', {
         name11: {
-            type: DataTypes.STRING,
+            type: Sequelize.STRING,
             allowNull: false,
         },
-        position23: DataTypes.STRING
+        position23: Sequelize.STRING,
+        // clubId123: {
+        //     type: Sequelize.INTEGER,
+        //     references: {
+        //         model: dbObject.clubs12,
+        //         key: 'id'
+        //     }
+        // } // creates reference to another table, without associations
     }, {
         tableName: 'footballers12', 
         underscored: true                   // instead of clubId, it'll be club_id 

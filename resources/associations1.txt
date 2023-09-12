@@ -1,7 +1,16 @@
-A.hasOne(B)                             One-To-One relationship;            foreign key in B
-A.belongsTo(B)                          One-To-One relationship;            foreign key in A
-A.hasMany(B)                            One-To-Many relationship;           foreign key in B
-A.belongsToMany(B, { through: 'C' })    Many-To-Many relationship;          C as junction table
-                                                                            C will have foreign keys (aId, bId). 
-                                                                            Sequelize will automatically create this model C
+A.hasOne(B)                             1-1 relationship;   foreign key in B
+A.belongsTo(B)                          1-1 relationship;   foreign key in A
+A.hasMany(B)                            1-N relationship;   foreign key in B
+A.belongsToMany(B, { through: 'C' })    N-M relationship;   C as junction table
+
 --------------------------------------------------------------------------------------
+
+C as junction table
+- C will have foreign keys (aId, bId)
+- Sequelize will automatically create this model C
+--------------------------------------------------------------------------------------
+
+
+footballers.hasOne(club)
+- footballer will have only one club
+- foreignKey will be in 'club'
