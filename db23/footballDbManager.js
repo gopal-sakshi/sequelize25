@@ -52,11 +52,11 @@ footballDb.footballers12 = require("./football23/footballers12")(footballDbInsta
 
 // APPROACH 02
 footballDb.footballers12.belongsTo(footballDb.clubs12, {
-    foreignKey: 'clubId33'
+    foreignKey: 'clubId33'            
 });  
-// footballDb.clubs12.hasMany(footballDb.footballers12, {
-//     foreignKey: 'clubId33'
-// });
+
+// APPROACH 02a         // a club can have only 1 captain... so, hasOne works here
+// footballDb.clubs12.hasOne(footballDb.footballers12, {as: 'captain'} );
 
 // APPROACH 03
 // footballDb.footballers12.hasOne(footballDb.clubs12);

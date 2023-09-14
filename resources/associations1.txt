@@ -14,3 +14,6 @@ C as junction table
 footballers.hasOne(club)
 - footballer will have only one club
 - foreignKey will be in 'club'
+--------------------------------------------------------------------------------------
+
+
