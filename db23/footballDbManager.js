@@ -37,45 +37,20 @@ const footballDbInstance = new Sequelize('football23', dbSettings.user, dbSettin
 
 const footballDb = {};
 
-
 footballDb.Sequelize = Sequelize;
 footballDb.sequelize = footballDbInstance;
 
 footballDb.clubs12 = require("./football23/clubs12")(footballDbInstance, Sequelize);
 footballDb.footballers12 = require("./football23/footballers12")(footballDbInstance, Sequelize, footballDb);
 
-// User.hasMany(Task);              // Will add userId to Task model
-// Task.belongsTo(User);            // Will also add userId to Task model
-
-// APPROACH 01
-// footballDb.footballers12.belongsTo(footballDb.clubs12);             ## README22
-
-// APPROACH 02
-footballDb.footballers12.belongsTo(footballDb.clubs12, {
-    foreignKey: 'clubId33'            
-});  
-
-// APPROACH 02a         // a club can have only 1 captain... so, hasOne works here
-// footballDb.clubs12.hasOne(footballDb.footballers12, {as: 'captain'} );
-
-// APPROACH 03
-// footballDb.footballers12.hasOne(footballDb.clubs12);
-// its just plain wrong... hasOne ====> used to define 1-1 relationship
-// but clubs & players ===> 1-N relationship... so, doesnt apply here 
-
-
-footballDbInstance.sync({force:true})
-// .then(() => seed23())
-.then(() => { return footballDb.clubs12.findOne() })
-.then((data11) => { console.log(data11) })
+function doAssociations23 () {
+    console.log('seeeded asosss======================');
+    footballDb.footballers12.belongsTo(footballDb.clubs12, {
+        foreignKey: 'clubId33'            
+    });
+    footballDb.footballers12.hasOne(footballDb.clubs12, {as: 'captain12'});
+}
+doAssociations23();
 
 
 module.exports = footballDb;
-
-/******************** README22
-just this line wont add foreignKey constraints in the database
-many ORMs (like sequelize) handle this belongsTo, hasMany internally
-if you want for foreignKey constraints in the database itself, do these additionally
-    use pair of association statements ====> hasMany & belongsTo
-    declare actions for onUpdate, onDelete
-/*****************/

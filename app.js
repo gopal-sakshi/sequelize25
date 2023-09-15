@@ -34,16 +34,24 @@ app.use('/seedFootball', async (req, res) => {
 app.use('/getAttributes', async (req, res) => {
     var attr11 = Object.keys(footballDbManager.footballers12.rawAttributes);
     res.send(attr11)
-})
+});
 
 app.use('/addTeam', async (req, res) => {
+    if(req.body.captain) {
+        var captain22 = await footballDbManager.footballers12.findOne({
+            where: { name11: req.body.captain }
+        });
+    }
+    console.log(captain22);
+    console.log(' =============>', captain22.id);
     var newTeam = await footballDbManager.clubs12.create({
         name12: req.body.name,
         stadium12: req.body.stadium,
-        country12: req.body.country
+        country12: req.body.country,
+        captian12_id : captain22 ? captain22.id : null
     });
     res.send(newTeam);
-})
+});
 
 app.use('/addPlayer', async (req, res) => {
     var blah22 = await footballDbManager.footballers12.create({
@@ -53,6 +61,16 @@ app.use('/addPlayer', async (req, res) => {
     });
     blah22.setClubs12()
     res.send(blah22);
+});
+
+app.use('/useAssociations1', async (req, res) => {
+    // var blah12 = await footballDbManager.clubs12.findAll({
+    //     include: [{ model: footballDbManager.footballers12, attributes: [ 'name11' ] }] 
+    // });
+    var blah12 = await footballDbManager.footballers12.findAll({
+        include: [{ model: footballDbManager.clubs12, attributes: ['name12'] } ]
+    });
+    res.send(blah12);
 })
 /******************************************************************/
 
