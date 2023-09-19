@@ -33,9 +33,8 @@ const footballDbInstance = new Sequelize('football23', dbSettings.user, dbSettin
     dialect: 'postgres',
     port: dbSettings.port,
     pool: dbSettings.pool,
-    define: {
-        timestamps: false
-    }
+    define: { timestamps: false },
+    logQueryParameters: true
 });
 
 const footballDb = {};
