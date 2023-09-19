@@ -79,5 +79,40 @@ fbRouter.use('/useAssociations2', async (req, res) => {
     res.send(blah12);
 });
 
+fbRouter.use('/updateMeta23', async (req, res) => {
+    var rmClub = await footballDbManager.clubs12.findByPk(1);
+    
+    // APPROACH 01
+    // var meta23 = rmClub.meta23 || {};
+    // meta23.isChanged = true;
+    // meta23.updatedTs = Date.now();
+    // var updatedRecord = await rmClub.update({meta23});
+    // var dbRecord_rmClub = await footballDbManager.clubs12.findByPk(1);
+
+    // APPROACH 02              // dbRecord is also updated.............
+    // var newMeta = {
+    //     ...rmClub.meta23,
+    //     isChanged: true,
+    //     updatedTs: Date.now()
+    // } 
+    // var updatedRecord = await rmClub.update({meta23: newMeta});
+    // var dbRecord_rmClub = await footballDbManager.clubs12.findByPk(1);
+
+    // APPROACH 03
+    var meta23 = rmClub.meta23 || {};
+    meta23.isChanged = true;
+    meta23.updatedTs = Date.now();
+    rmClub.changed('meta23', true);
+    var updatedRecord = await rmClub.update({meta23});
+    var dbRecord_rmClub = await footballDbManager.clubs12.findByPk(1);
+
+    // readMe
+    // since meta && rmClub.meta ====> both point to same thing
+    // sequelize interprets this is not updated...
+    // return value of .update() method is newValue ====> but the value in database isnt updated !!!
+    // so, use APPROACH 02 (or) APPROACH 03
+
+    res.send({oldRecord: rmClub, dbRecord: dbRecord_rmClub});
+})
 /*************************************************************/
 module.exports = fbRouter;
