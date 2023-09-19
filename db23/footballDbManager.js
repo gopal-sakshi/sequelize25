@@ -26,13 +26,16 @@ const seed23 = () => {
 };
 
 const footballDbInstance = new Sequelize('football23', dbSettings.user, dbSettings.password, {
-    query: { raw:true },
+    // query: { raw:true },            // I commented raw:true ===> so that associations will work
     logging: console.log,
     // logging: dbSettings.logging,
     host: dbSettings.host,
     dialect: 'postgres',
     port: dbSettings.port,
-    pool: dbSettings.pool
+    pool: dbSettings.pool,
+    define: {
+        timestamps: false
+    }
 });
 
 const footballDb = {};
@@ -43,12 +46,32 @@ footballDb.sequelize = footballDbInstance;
 footballDb.clubs12 = require("./football23/clubs12")(footballDbInstance, Sequelize);
 footballDb.footballers12 = require("./football23/footballers12")(footballDbInstance, Sequelize, footballDb);
 
+// footballDbInstance.sync({force:true});
+
 function doAssociations23 () {
     console.log('seeeded asosss======================');
-    footballDb.footballers12.belongsTo(footballDb.clubs12, {
-        foreignKey: 'clubId33'            
-    });
-    footballDb.footballers12.hasOne(footballDb.clubs12, {as: 'captain12'});
+    footballDb.footballers12.belongsTo(footballDb.clubs12, 
+        { foreignKey: 'clubId33' },
+        { onDelete: 'SET NULL' }
+    );
+
+    // if you do this ===> clubs12 is associated to footballers12
+    // but not viceversa ===> footballers12 is NOT YET associated to clubs12
+    // meaning, you can only do footballers12.findAll({ include: [clubs12] })
+    // but you CAN NOT DO clubs12.findAll({ include: [footballers12] })
+    // footballDb.footballers12.hasOne(footballDb.clubs12,
+    //     { as: 'captain12' },
+    //     { onDelete: 'SET NULL' }
+    // );
+
+    // SO USE THISSSSSSS =========> for associations to work both ways
+    footballDb.clubs12.belongsTo(footballDb.footballers12, 
+        { as: 'captain12' },
+        { onDelete: 'SET NULL' }
+    ); 
+
+
+
 }
 doAssociations23();
 

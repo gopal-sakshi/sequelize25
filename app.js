@@ -48,7 +48,7 @@ app.use('/addTeam', async (req, res) => {
         name12: req.body.name,
         stadium12: req.body.stadium,
         country12: req.body.country,
-        captian12_id : captain22 ? captain22.id : null
+        captain12Id : captain22 ? captain22.id : null
     });
     res.send(newTeam);
 });
@@ -64,14 +64,33 @@ app.use('/addPlayer', async (req, res) => {
 });
 
 app.use('/useAssociations1', async (req, res) => {
-    // var blah12 = await footballDbManager.clubs12.findAll({
-    //     include: [{ model: footballDbManager.footballers12, attributes: [ 'name11' ] }] 
-    // });
+    var blah12 = { old:true };
+    // if u use raw:true ===> associations not working
     var blah12 = await footballDbManager.footballers12.findAll({
         include: [{ model: footballDbManager.clubs12, attributes: ['name12'] } ]
     });
     res.send(blah12);
-})
+});
+
+app.use('/useAssociations2', async (req, res) => {
+    var blah12 = { old:true };
+    // if u use raw:true ===> associations not working
+
+    // ERROR: footballers12 is associated to clubs12 using an alias
+    // blah12 = await footballDbManager.clubs12.findAll({
+    //     include: [{ model: footballDbManager.footballers12, attributes: [ 'name11' ] }] 
+    // });
+
+    // WITH ALIAS
+    blah12 = await footballDbManager.clubs12.findAll({
+        include: [{ 
+            model: footballDbManager.footballers12, 
+            attributes: [ 'name11' ],
+            as: 'captain12' 
+        }] 
+    });
+    res.send(blah12);
+});
 /******************************************************************/
 
 

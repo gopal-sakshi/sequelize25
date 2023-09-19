@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         stadium12: DataTypes.STRING,
-        country12: DataTypes.STRING
-    }, { tableName: 'clubs12', underscored: true });
+        country12: DataTypes.STRING,
+        meta23: DataTypes.JSONB
+    }, { tableName: 'clubs12' });
     return clubs12;
 };

@@ -14,7 +14,7 @@ module.exports = (sequelize, Sequelize, dbObject) => {
         // } // creates reference to another table, without associations
     }, {
         tableName: 'footballers12', 
-        underscored: true                   // instead of clubId, it'll be club_id 
+        // underscored: true                   // instead of clubId, it'll be club_id 
     });
     return footballers12;
 };

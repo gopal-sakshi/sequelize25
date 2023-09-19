@@ -183,6 +183,10 @@ module.exports = function (sequelize, DataTypes) {
     };
 
     SupportConversation.markAgentDisposed = async function (agentSocketId, conversationId) {
+        // this update() is called on Model... it takes 2nd param where clause
+        // Model23.upate() ===========> will update all matching rows
+        // u can also call .update() on particular record ===> it wont take where clause
+        // it just updates that particular row and nothing else
         return SupportConversation.update({
             status: CONV_STATUS.AGENT_DISCONNECTED
         }, {

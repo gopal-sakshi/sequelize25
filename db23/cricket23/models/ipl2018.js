@@ -57,6 +57,8 @@ module.exports = (dbInstance, SequelizeClass) => {
     }
 
     ipl2018.update23 = function(oldTeamName, newTeamName) {
+        // learn about Model.update() & record.update()
+        // here also, we use Model.update(); bcoz ipl2018 is a model here
         return ipl2018.update(
             { team: newTeamName },
             { where: { team: oldTeamName }}

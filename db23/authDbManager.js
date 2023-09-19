@@ -17,7 +17,6 @@ authDb.sequelize = authDbInstance;
 
 authDb.org23 = require("./auth23/org23")(authDbInstance, Sequelize);
 authDb.user23 = require("./auth23/user23")(authDbInstance, Sequelize);
-
 module.exports = authDb;
 
 /********************************************************

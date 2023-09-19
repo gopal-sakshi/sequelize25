@@ -107,9 +107,16 @@ footballDb.footballers12.hasOne(footballDb.clubs12, {as: 'captain12'});
 module.exports = footballDb;
 
 /******************** README22
-just this line wont add foreignKey constraints in the database
+just this line may (or) may not add foreignKey constraints in the database
 many ORMs (like sequelize) handle this belongsTo, hasMany internally
 if you want for foreignKey constraints in the database itself, do these additionally
     use pair of association statements ====> hasMany & belongsTo
     declare actions for onUpdate, onDelete
+
+
+Update23
+- even though not specifigy onUpdate, onDelete ==> no problem
+- it will create foreignKey constraints
+- just that without specifying onUpdate, onDelete 
+    sequelize.create() ===> will not write foriegnKey declarations into actual database
 /*****************/
