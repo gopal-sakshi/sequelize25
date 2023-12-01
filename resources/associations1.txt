@@ -1,6 +1,6 @@
-A.hasOne(B)                             1-1 relationship;   foreign key in B
-A.belongsTo(B)                          1-1 relationship;   foreign key in A
-A.hasMany(B)                            1-N relationship;   foreign key in B
+A.belongsTo(B)                          1-1 relationship;   foreign key in A (source)
+A.hasOne(B)                             1-1 relationship;   foreign key in B (target)
+A.hasMany(B)                            1-N relationship;   foreign key in B (target)
 A.belongsToMany(B, { through: 'C' })    N-M relationship;   C as junction table
 
 --------------------------------------------------------------------------------------
