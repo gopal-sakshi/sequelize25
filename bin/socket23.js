@@ -3,12 +3,6 @@ const ConnectionHandler = require('./connectionHandler');
 const blah = require('../controllers/tenantDbController');
 
 
-
-
-
-
-
-
 /***************** MIddleWares ************************/
 const serverMiddleware23 = async (socket, next) => {
     console.log('new connection about to start --> ', socket.id);
@@ -62,7 +56,7 @@ async function createSocketServer (httpServer) {
     io.adapter(createAdapter(pubClient, subClient));
     /***********************************************************/
 
-    // ConnectionHandler(io);
+    ConnectionHandler(io);
     utilityMethods(io);
     return io;
 }   

@@ -11,7 +11,8 @@ async function handler (io) {
         /************************************************/
 
         socket.on("footballEvents24", (data) => {
-            socket.emit("footballEvents24", JSON.stringify(data));
+            console.log("rcvd data ====> ", JSON.stringify(data));
+            socket.emit("emitData11", "ipudu oka data ni emit cheyyaali");
         });
 
         socket.on("error", (err) => {
