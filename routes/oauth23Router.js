@@ -34,14 +34,17 @@ async function decodeRefreshToken(token) {
         })
     })
 }
+
 async function refreshAccessToken(userId, data) {
     var refreshCodeInfo = await decodeRefreshToken(data.refreshToken);
     if(refreshCodeInfo) return generateTokens(userId);
     else return Promise.reject('refresh token not valid')
 }
+
 async function createAccessToken(userId, body) {
     res.send(generateTokens(user));
 }
+
 function generateTokens(user){
     var accessPayload = { id: user.id, ts: tokenTimestamp }
     var accessToken = jwt.sign(accessPayload, PRIVATE_KEY, { expiresIn: 60, algorithm: 'RS256'});
@@ -54,6 +57,7 @@ function generateTokens(user){
     var refreshToken = jwt.sign(refreshPayload, PRIVATE_KEY, {expiresIn: 60, algorithm: 'RS256'});
     return { accessToken : accessToken, refreshToken : refreshToken };
 }
+
 async function token23(req, res, next) {
     res.send({ info: 'token Info received'});
     if (req.body.grantType === 'refresh_token') {

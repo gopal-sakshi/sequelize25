@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon --ignore resources/* ./bin/www",
     "start_kpt": "export NODE_ENV=kpt&& node bin/www",
-    "start_home": "SET NODE_ENV=home&& nodemon bin/www"
+    "start_home": "export NODE_ENV=home&& nodemon bin/www"
   },
   "author": "",
   "license": "ISC",

@@ -11,7 +11,8 @@ const tenantRouter = require('./routes/tenant23DbRouter');
 const cricketRouter = require('./routes/cricket23Router');
 const footballRouter = require('./routes/football23Router');
 
-app.use('/auth', authRouter);
+
+app.use('/auth', authRouter);           // ignore IGNORE authRouter (2024-07-09)
 app.use('/oauth23', oauth23Router);
 app.use('/cricket23', cricketRouter);
 app.use('/tenant44', tenantRouter);
