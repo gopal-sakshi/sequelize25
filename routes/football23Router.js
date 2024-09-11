@@ -44,9 +44,11 @@ fbRouter.use('/addPlayer', async (req, res) => {
     var blah22 = await footballDbManager.footballers12.create({
         name11: req.body.name11,
         position23: req.body.position23,
-        clubId33: req.body.clubId              // why is it not clubs12_id     ??
+        clubId33: req.body.clubId,              // why is it not clubs12_id     ??
+        clubs12Id:req.body.clubId
     });
-    blah22.setClubs12()
+    // blah22.setClubs12(req.body.clubId);
+    // await footballDbManager.clubs12.findOne({where: { id: req.body.clubId }}).footballers12()
     res.send(blah22);
 });
 
@@ -74,6 +76,15 @@ fbRouter.use('/useAssociations2', async (req, res) => {
             model: footballDbManager.footballers12, 
             attributes: [ 'name11' ],
             as: 'captain12' 
+        }] 
+    });
+    res.send(blah12);
+});
+
+fbRouter.use('/useAssociations3', async (req, res) => {
+    blah12 = await footballDbManager.clubs12.findAll({
+        include: [{ 
+            model: footballDbManager.footballers12
         }] 
     });
     res.send(blah12);

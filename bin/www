@@ -10,28 +10,28 @@ server23.on('listening', onListening);
 
 // we are passing httpServer (with name = server23) as argument to socket
 try {
-  // temporarily disable socketio (websockets); learn sequelize functions...
-  var io = require('./socket23')(server23);
-} catch(err) { console.log(err); }
+    // temporarily disable socketio (websockets); learn sequelize functions...
+    // var io = require('./socket23')(server23);
+} catch (err) { console.log(err); }
 
 
 function onError(error) {
-  if (error.syscall !== 'listen') { throw error; }
-  switch (error.code) {
-    case 'EACCES':
-      console.error(' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
+    if (error.syscall !== 'listen') { throw error; }
+    switch (error.code) {
+        case 'EACCES':
+            console.error(' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
 }
 
 function onListening() {
-  var addr = server23.address();
-  console.log('Listening on ' + addr.port);
+    var addr = server23.address();
+    console.log('Listening on ' + addr.port);
 }

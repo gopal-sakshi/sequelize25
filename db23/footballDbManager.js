@@ -11,16 +11,18 @@ const seed23 = () => {
         footballDb.footballers12.create({ name11: 'alaba', position23: 'center back' }),
         footballDb.footballers12.create({ name11: 'vini', position23: 'winger' }),
         footballDb.footballers12.create({ name11: 'savic', position23: 'center back' }),
-        footballDb.footballers12.create({ name11: 'koke', position23: 'midfield' })
+        footballDb.footballers12.create({ name11: 'koke', position23: 'midfield' }),
+        footballDb.footballers12.create({ name11: 'maguire', position23: 'center back' }),
     ])
-    .then(([rm,atleti,benz,modric,alaba,vini,savic,koke]) => {
+    .then(([rm,atleti,manu, benz,modric,alaba,vini,savic,koke, maguire]) => {
         return Promise.all([
             benz.setClubs12(rm),
             modric.setClubs12(rm),
             alaba.setClubs12(rm),
             vini.setClubs12(rm),
             savic.setClubs12(atleti),
-            koke.setClubs12(atleti)
+            koke.setClubs12(atleti),
+            maguire.setClubs12(manu)
         ])
     })
     .catch(error => console.log(error));
@@ -47,7 +49,9 @@ footballDb.clubs12 = require("./football23/model23/clubs12")(footballDbInstance,
 footballDb.footballers12 = require("./football23/model23/footballers12")(footballDbInstance, Sequelize, footballDb);
 footballDb.address12 = require("./football23/model23/addresses12")(footballDbInstance, Sequelize, footballDb);
 
-// footballDbInstance.sync({force:true});
+// footballDbInstance.sync({force:true}).then(() => 
+//     seed23()
+// );
 
 function doAssociations23 () {
     console.log('seeeded asosss======================');
@@ -70,9 +74,12 @@ function doAssociations23 () {
     footballDb.clubs12.belongsTo(footballDb.footballers12, 
         { as: 'captain12' },
         { onDelete: 'SET NULL' }
-    ); 
+    );
 
-
+    // clubs12Id is created on footballers12 table
+    footballDb.clubs12.hasMany(footballDb.footballers12,
+        { onDelete: 'SET NULL' }
+    );
 
 }
 doAssociations23();

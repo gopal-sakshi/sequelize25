@@ -78,7 +78,7 @@ footballDb.footballers12.belongsTo(footballDb.clubs12, {
     // just find where you need foreignKey column... 
     // randomly pick sourceModel & targetModel... then use "belongsTo" (or) "hasOne" accordingly
     // keep revising.... bs = 'B'elongsTo creates foreignKey on 'S'ourceModel
-    // so, approach 02 & approach 2a ===> both accomplish the samem thing
+    // so, approach 02 & approach 2a ===> both accomplish the same thing
     // read associations_belongsTo.md for explanation       #explain23232
 
 // APPROACH 03
