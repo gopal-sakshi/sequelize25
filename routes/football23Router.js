@@ -14,7 +14,6 @@ fbRouter.use('/seedFootball', async (req, res) => {
         
         raw: true           // for some reason, this is needed to work with associations ???
     });
-    // var blah22 = await footballDbManager.footballers12.findAll({})
     res.send(blah22);
 });
 

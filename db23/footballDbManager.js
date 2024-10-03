@@ -31,7 +31,6 @@ const seed23 = () => {
 const footballDbInstance = new Sequelize('football23', dbSettings.user, dbSettings.password, {
     // query: { raw:true },            // I commented raw:true ===> so that associations will work
     logging: console.log,
-    // logging: dbSettings.logging,
     host: dbSettings.host,
     dialect: 'postgres',
     port: dbSettings.port,
